@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
     "allowUnusedLabels": false,
     "baseUrl": ".",
     "esModuleInterop": true,
@@ -10,14 +9,10 @@
       "dom.iterable",
       "esnext"
     ],
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "noEmit": true,
+    "module": "ESNext",
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "outDir": "dist",
     "paths": {
       "@actor": [
@@ -54,15 +49,9 @@
         "types/src/util/*"
       ]
     },
-    "removeComments": false,
-    "resolveJsonModule": true,
     "rootDir": ".",
     "skipLibCheck": true,
     "sourceMap": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": false,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
     "target": "es2022",
     "typeRoots": [
       "node_modules/@types",
@@ -71,7 +60,7 @@
     "types": [
       "jquery",
       "node",
-      "tooltipster",
+      "tooltipster"
     ],
     "useDefineForClassFields": true
   },
