@@ -2,11 +2,61 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "ES6",
-    "lib": ["DOM", "ES6", "ES2017", "ES2018"],
-    "types": ["foundry-pc-types", "node"],
+    "lib": [
+      "DOM",
+      "ES6",
+      "ES2017",
+      "ES2018"
+    ],
+    "paths": {
+      "@actor": [
+        "types/src/module/actor/index.js"
+      ],
+      "@actor/*": [
+        "types/src/module/actor/*"
+      ],
+      "@item": [
+        "types/src/module/item/index.js"
+      ],
+      "@item/*": [
+        "types/src/module/item/*"
+      ],
+      "@module/*": [
+        "types/src/module/*"
+      ],
+      "@scene": [
+        "types/src/module/scene/index.js"
+      ],
+      "@scene/*": [
+        "types/src/module/scene/*"
+      ],
+      "@scripts/*": [
+        "types/src/scripts/*"
+      ],
+      "@system/*": [
+        "types/src/module/system/*"
+      ],
+      "@util": [
+        "types/src/util/index.js"
+      ],
+      "@util/*": [
+        "types/src/util/*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "types/types/foundry"
+    ],
+    "types": [
+      "jquery",
+      "node",
+      "tooltipster",
+    ],
     "allowUmdGlobalAccess": true
   },
-  "files": ["./gulpfile.ts"],
+  "files": [
+    "./gulpfile.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

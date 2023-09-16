@@ -9,7 +9,6 @@
   "author": "Memely",
   "license": "MIT",
   "devDependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "^9.268.0",
     "@types/node": "^18.11.16",
     "cb": "^0.1.1",
     "fs": "^0.0.1-security",
