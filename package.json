@@ -13,7 +13,7 @@
     "@types/node": "^18.11.16",
     "cb": "^0.1.1",
     "fs": "^0.0.1-security",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-typescript": "^2.12.2",
     "js-yaml": "^4.1.0",
     "merge-stream": "^2.0.0",
