@@ -1,13 +1,24 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "ES6",
+    "allowImportingTsExtensions": true,
+    "allowUnusedLabels": false,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "lib": [
-      "DOM",
-      "ES6",
-      "ES2017",
-      "ES2018"
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist",
     "paths": {
       "@actor": [
         "types/src/module/actor/index.js"
@@ -43,6 +54,16 @@
         "types/src/util/*"
       ]
     },
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": false,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "target": "es2022",
     "typeRoots": [
       "node_modules/@types",
       "types/types/foundry"
@@ -52,12 +73,12 @@
       "node",
       "tooltipster",
     ],
-    "allowUmdGlobalAccess": true
+    "useDefineForClassFields": true
   },
-  "files": [
-    "./gulpfile.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "watchOptions": {
+    "excludeDirectories": [
+            "packs/data/",
+      "static/packs/"
+    ]
+  }
 }
