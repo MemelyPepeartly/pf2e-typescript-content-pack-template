@@ -9,8 +9,8 @@
     }
   ],
   "version": "0.0.1",
-  "minimumCoreVersion": "10",
-  "compatibleCoreVersion": "10",
+  "minimumCoreVersion": "11",
+  "compatibleCoreVersion": "11",
   "manifestPlusVersion": "1.0.0",
   "url": "",
   "manifest": "",
@@ -50,6 +50,29 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "FolderName",
+      "sorting": "m",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "folders": [
+        {
+          "name": "SecondLevelFolderName",
+          "sorting": "m",
+          "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+          },
+          "packs": [
+            "item-pack-name"]
+        }
+      ],
+      "packs": []
     }
   ],
   "packs": [
