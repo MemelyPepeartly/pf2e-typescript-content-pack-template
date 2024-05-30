@@ -4,7 +4,7 @@ export function registerSettings() {
     // Type assertion to inform TypeScript that `game` is indeed a Game object
     const gameInstance = game as Game;
 
-    gameInstance.settings.register(CONSTANTS.MODULEID, "GPTApiKey", {
+    gameInstance.settings.register(CONSTANTS.MODULEID, "MyModuleKey", {
         name: "My Setting",
         hint: "Add your setting here",
         scope: "client",
