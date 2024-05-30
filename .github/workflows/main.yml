@@ -41,12 +41,12 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          name: Latest
+          name: Release ${{ steps.get_version.outputs.version }}
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './dist/module.json,./module.zip'
-          tag: latest
+          tag: ${{ steps.get_version.outputs.version }}
       
       - name: Create Version Release
         id: create_version_release
