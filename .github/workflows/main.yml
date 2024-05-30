@@ -1,70 +1,61 @@
-name: Module CI/CD
+name: CI/CD
 
-on: 
-  push:
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-
-# Required to create new releases (in some repos?)
-# https://github.com/ncipollo/release-action/issues/208
 permissions:
   contents: write
 
-jobs: 
-  build:
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' 
 
-    - name: Install dependancies
-      shell: bash
-      id: install-dependancies
-      run: npm ci
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Build
-      shell: bash
-      id: build
-      run: npm run build
-
-    # This manifest points to the latest, allowing foundry to find the latest version when updating (this should be in the zipped package)
-    - name: Create package manifest
-      shell: bash
-      id: create-package-manifest
-      run: npm run updateZipManifestForGithub
-
-    # create a zip file with all files required by the module to add to the release
-    - name: Package
-      shell: bash
-      id: package
-      run: npm run package
-
-    # This manifest points to itself, allowing to download a specific version
-    - name: Create external manifest
-      shell: bash
-      id: create-external-manifest
-      run: npm run updateExternalManifestForGithub
-
-    # Update the 'latest' release
-    - name: Update Latest Release
-      id: create-latest-release
-      uses: ncipollo/release-action@v1
-      with:
-        allowUpdates: true
-        name: Latest
-        draft: false
-        prerelease: false
-        token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: './dist/module.json, ./package/module.zip'
-        tag: latest
-    
-    # Create a release for this specific version
-    - name: Create Version Release
-      id: create-version-release
-      uses: ncipollo/release-action@v1
-      with:
-        allowUpdates: true # set this to false if you want to prevent updating existing releases
-        name: Release ${{ github.ref_name }}
-        draft: false
-        prerelease: false
-        token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: './dist/module.json, ./package/module.zip'
+      - name: Build Project
+        run: npm run build
+      
+      - name: Get Version from package.json
+        id: get_version
+        run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
+      
+      - name: Zip dist Directory
+        run: |
+          cd dist
+          zip -r ../module.zip ./*
+      
+      
+      - name: Update Latest Release
+        id: update_latest_release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          name: Latest
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: './dist/module.json,./module.zip'
+          tag: latest
+      
+      - name: Create Version Release
+        id: create_version_release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          name: Release ${{ steps.get_version.outputs.version }}
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: './dist/module.json,./module.zip'
+          tag: ${{ steps.get_version.outputs.version }}

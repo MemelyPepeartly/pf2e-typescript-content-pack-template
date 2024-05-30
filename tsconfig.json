@@ -1,21 +1,18 @@
 {
   "compilerOptions": {
+    "target": "es2018",                // Or the ECMAScript target that suits Foundry VTT's current version
+    "module": "esnext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
-    "target": "ES6",
-    "experimentalDecorators": true,
-    "lib": ["DOM", "ES6", "ES2017", "ES2018", "ES2019", "ES2020"],
     "types": ["@league-of-foundry-developers/foundry-vtt-types"],
     "skipLibCheck": true,
-    "sourceMap": true,
-    "allowUmdGlobalAccess": true
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false
   },
-  "include": [ "src/**/*", "gulpfile.ts/**/*" ],
-  "exclude": ["node_modules"],
-  "ts-node": {
-    "compilerOptions": {
-      "strictNullChecks": false,
-      "allowSyntheticDefaultImports": false,
-      "skipLibCheck": true
-    }
-  }
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
